@@ -1,9 +1,10 @@
 package log
 
 import (
+	"os"
+
 	"github.com/vnworkday/config"
 	"go.uber.org/zap"
-	"os"
 )
 
 func NewMockConfig(local bool) func() {
