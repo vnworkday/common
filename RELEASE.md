@@ -3,7 +3,7 @@
 Execute the following commands to release a new version of the project:
 
 ```bash
-sh scripts/go-release.sh -t $type
+sh scripts/release.sh -t $type
 ```
 
 Where `$type` is one of the following:
@@ -19,8 +19,7 @@ The script automates the process of releasing the Go module with the following s
 3. Makes sure the git repository is clean. If it is not, it exits.
 4. Gets the latest tag from the package.json file.
 5. Increments the version using `npm version $type`.
-6. Generates Go code using `npm run gen:go`.
-7. Stages the files and commits them.
-8. Pushes the changes to the remote repository and creates a new tag.
+6. Stages the files and commits them.
+7. Pushes the changes to the remote repository and creates a new tag.
 
 The remaining steps are done by the GitHub Actions workflow (`.github/workflows/release.yml`). It will build the Go code, create a release draft, and upload the binaries to the release page.

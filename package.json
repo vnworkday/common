@@ -1,5 +1,5 @@
 {
-  "name": "config",
+  "name": "common",
   "version": "1.0.2",
   "description": "Shared library for vnworkday",
   "main": "index.js",
