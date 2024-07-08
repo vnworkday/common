@@ -6,7 +6,7 @@ import (
 	"go.uber.org/fx"
 )
 
-// FxRegisterWithName registers a constructor with a name and parameters.
+// RegisterWithName registers a constructor with a name and parameters.
 // This is useful for providing multiple instances of the same type.
 //
 // Parameters:
@@ -19,10 +19,10 @@ import (
 // Example:
 //
 //	 fx.Provide(
-//		    util.FxRegisterWithName(NewService, "service1"),
-//		    util.FxRegisterWithName(NewService, "service2"),
+//		    ioc.RegisterWithName(NewService, "service1"),
+//		    ioc.RegisterWithName(NewService, "service2"),
 //	 )
-func FxRegisterWithName(constructor any, name ...string) any {
+func RegisterWithName(constructor any, name ...string) any {
 	if len(name) == 0 {
 		return constructor
 	}
@@ -43,7 +43,7 @@ func FxRegisterWithName(constructor any, name ...string) any {
 	)
 }
 
-// FxRegisterWithGroup registers a constructor with a group name and type.
+// RegisterWithGroup registers a constructor with a group name and type.
 // This is useful for grouping constructors together.
 //
 // Parameters:
@@ -58,9 +58,9 @@ func FxRegisterWithName(constructor any, name ...string) any {
 // Example:
 //
 //	 fx.Provide(
-//		    util.FxRegisterWithGroup(NewGroup, "my-group", new(MyGroup)),
+//		    ioc.RegisterWithGroup(NewGroup, "my-group", new(MyGroup)),
 //	 )
-func FxRegisterWithGroup(groupCreation any, groupName string, groupType any) any {
+func RegisterWithGroup(groupCreation any, groupName string, groupType any) any {
 	tag := fmt.Sprintf(`group:"%s"`, groupName)
 
 	return fx.Annotate(

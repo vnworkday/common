@@ -15,9 +15,9 @@ func TestRegisterServiceWithDifferentNames(t *testing.T) {
 	t.Parallel()
 
 	app := fxtest.New(t,
-		registerMock(FxRegisterWithName(NewMockDep, "dep1")),
-		registerMock(FxRegisterWithName(NewMockDep, "dep2")),
-		registerMock(FxRegisterWithName(NewMockService)),
+		registerMock(RegisterWithName(NewMockDep, "dep1")),
+		registerMock(RegisterWithName(NewMockDep, "dep2")),
+		registerMock(RegisterWithName(NewMockService)),
 	)
 
 	app.RequireStart()
@@ -28,9 +28,9 @@ func TestRegisterServicesInGroup(t *testing.T) {
 	t.Parallel()
 
 	app := fxtest.New(t,
-		registerMock(FxRegisterWithGroup(NewMockDep, "deps", new(MockDep))),
-		registerMock(FxRegisterWithGroup(NewMockDep, "deps", new(MockDep))),
-		registerMock(FxRegisterWithName(NewMockServiceGroup)),
+		registerMock(RegisterWithGroup(NewMockDep, "deps", new(MockDep))),
+		registerMock(RegisterWithGroup(NewMockDep, "deps", new(MockDep))),
+		registerMock(RegisterWithName(NewMockServiceGroup)),
 	)
 
 	app.RequireStart()
